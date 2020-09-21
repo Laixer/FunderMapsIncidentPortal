@@ -35,6 +35,7 @@
         label="Telefoonnummer"
         id="telefoon"
         type="tel"
+        :pattern="this.phoneRegex"
         autocomplete="tel"
         placeholder="+31"
         :valid="phoneNumberValid"
@@ -85,6 +86,8 @@ export default class ProfileQuestion extends Mixins(QuestionMixin) {
   private phoneNumber: string | null = null
   private note: string | null = null
 
+
+
   private get firstnameValid(): boolean | null {
     return this.firstName !== null
       && this.firstName.length < 255
@@ -104,10 +107,13 @@ export default class ProfileQuestion extends Mixins(QuestionMixin) {
       && EmailValidator.validate(this.email)
   }
 
+  private phoneRegex = /\d+/
   private get phoneNumberValid(): boolean {
     return this.phoneNumber !== null
-      && this.phoneNumber.length < 20
       && this.phoneNumber.length > 0
+      && this.phoneNumber.length <= 16
+      && this.phoneRegex.test(this.phoneNumber)
+
   }
 
   private get noteValid(): boolean {
@@ -120,9 +126,10 @@ export default class ProfileQuestion extends Mixins(QuestionMixin) {
   public get isValid(): boolean {
     const body = this.$store.getters.getIndicentRequestBody
 
-    if (!body) return false
+    if (!body) {
+      return false
+    }
 
-    console.log(body)
     return !!(
       body.Address
       && body.ClientId

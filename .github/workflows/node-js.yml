@@ -11,8 +11,8 @@ on:
 
 env:
   NODEJS_VERSION: '14.x'
-  PRIMARY_COLOR: '#2657FF'
   BREAKPOINT: '900px'
+  VUE_APP_PRIMARY_COLOR: '#2657FF'
   VUE_APP_CLIENTID: 57
   VUE_APP_MAPBOX_TOKEN: 'pk.eyJ1Ijoiam91cm5leXdvcmtzIiwiYSI6ImNrZXUwbG1zYjJtZXUzM284czQ5OGxvNHQifQ.CR6UwylpbEJh7rH4IE9wgA'
   VUE_APP_MAPBOX_STYLE: 'mapbox://styles/journeyworks/ckeu0ndyc99j319qqz5ywaz2b'
@@ -31,7 +31,37 @@ jobs:
       with:
         node-version: ${{ env.NODEJS_VERSION }}
     - run: npm install
-    - run: npm run-script build
+    - run: npm run build
+
+  test-deploy:
+    name: Test Deploy
+    env:
+      ARCHIVE: portal-fundermaps.${{ github.sha }}.tar.gz
+
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODEJS_VERSION }}
+
+    - name: Print version
+      run: |
+        find src -type f -exec sed -i "s/@@VERSION@@/$(git describe --long --always)/" {} +
+        find src -type f -exec sed -i "s/@@COMMIT@@/$(git rev-parse HEAD)/" {} +
+
+    - run: npm install
+    - run: bash .github/workflows/build-vendors.sh
+      env: 
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+        SSH_KEY: ${{ secrets.SSH_KEY }}
 
   deploy:
     name: Deploy
@@ -45,10 +75,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
       
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODEJS_VERSION }}
+
+    - name: Print version
+      run: |
+        find src -type f -exec sed -i "s/@@VERSION@@/$(git describe --long --always)/" {} +
+        find src -type f -exec sed -i "s/@@COMMIT@@/$(git rev-parse HEAD)/" {} +
 
     - run: npm install
     - run: npm run build

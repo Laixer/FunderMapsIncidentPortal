@@ -21,6 +21,7 @@
         :id="id"
         :value="fieldValue"
         :type="type"
+        :pattern="pattern"
         :placeholder="placeholder"
         :autocomplete="autocomplete ? autocomplete: 'off'"
         :disabled="isDisabled"
@@ -57,6 +58,8 @@ export default class FormField extends Vue {
    * The type of form field
    */
   @Prop({ default: 'text' }) readonly type!: string;
+
+  @Prop({ default: '' }) readonly pattern!: string;
 
   /**
    * The field id
@@ -355,7 +358,7 @@ $disabled: adjust-color(
     font-size: 18px;
     line-height: 21px;
     letter-spacing: -0.3px;
-    color: #77808d;
+    color: #606976;
     margin-bottom: 9px;
   }
 
@@ -373,7 +376,7 @@ $disabled: adjust-color(
     transition: border-color 0.2s ease-in-out;
 
     &::placeholder {
-      color: #77808d;
+      color: #606976;
     }
 
     &:focus {

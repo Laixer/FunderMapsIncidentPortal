@@ -5,18 +5,22 @@ export function formatAddressSuggestion(suggestion: ISuggestion): string {
 }
 
 export function formatAddressSuggestionWithMarkup(suggestion: ISuggestion, inputValue: string): string {
-    const formatted = _formatAddressSuggestion(suggestion)
-    const matches = [...formatted.toLowerCase().matchAll(new RegExp(inputValue.toLowerCase(), "g"))]
+    let formatted = _formatAddressSuggestion(suggestion)
+    const indexOf = formatted.toLowerCase().indexOf(inputValue.toLowerCase())
 
-    if (matches.length > 0) {
-        const index = matches[0].index
-        const length = matches[0][0].length
+    formatted = formatted.length > 32
+        ? formatted.substr(0, 32 - 1) + '&hellip;'
+        : formatted;
 
-        return [formatted.slice(0, index), '<strong>', formatted.slice(index, length), '</strong>', formatted.slice(length, formatted.length)].join('')
+    if (indexOf !== undefined) {
+
+        const length: number = inputValue.length as number
+        const end: number = indexOf + length
+        return [formatted.slice(0, indexOf), '<strong>', formatted.slice(indexOf, end), '</strong>', formatted.slice(end, formatted.length)].join('')
     }
     return formatted
 }
 
 function _formatAddressSuggestion(suggestion: ISuggestion): string {
-    return `${suggestion.street} ${suggestion.buildingNumber}${(suggestion.postalCode) ? `, ${suggestion.postalCode}` : ''}`.replace(/\s\s+/g, '')
+    return `${suggestion.street} ${suggestion.buildingNumber}${(suggestion.postalCode) ? `, ${suggestion.postalCode}` : ''}, ${suggestion.city}`.replace(/\s\s+/g, '')
 }
