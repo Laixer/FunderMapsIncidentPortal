@@ -11,8 +11,8 @@ on:
 
 env:
   NODEJS_VERSION: '14.x'
-  PRIMARY_COLOR: '#2657FF'
   BREAKPOINT: '900px'
+  VUE_APP_PRIMARY_COLOR: '#2657FF'
   VUE_APP_CLIENTID: 57
   VUE_APP_MAPBOX_TOKEN: 'pk.eyJ1Ijoiam91cm5leXdvcmtzIiwiYSI6ImNrZXUwbG1zYjJtZXUzM284czQ5OGxvNHQifQ.CR6UwylpbEJh7rH4IE9wgA'
   VUE_APP_MAPBOX_STYLE: 'mapbox://styles/journeyworks/ckeu0ndyc99j319qqz5ywaz2b'
@@ -31,22 +31,28 @@ jobs:
       with:
         node-version: ${{ env.NODEJS_VERSION }}
     - run: npm install
-    - run: npm run-script build
+    - run: npm run build
 
   deploy:
     name: Deploy
     env:
-      DEPLOY_NAME: portal-fundermaps
-      ARCHIVE: portal-fundermaps.${{ github.sha }}.tar.gz
+      ARCHIVE: ${{ matrix.vendor }}.${{ github.sha }}.tar.gz
 
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     needs: [build]
 
+    strategy:
+      matrix:
+        vendor: [portal-fundermaps]
+
     steps:
     - uses: actions/checkout@v2
-      
-    - uses: actions/setup-node@v1
+      with:
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODEJS_VERSION }}
 
@@ -56,7 +62,7 @@ jobs:
         find src -type f -exec sed -i "s/@@COMMIT@@/$(git rev-parse HEAD)/" {} +
 
     - run: npm install
-    - run: npm run build
+    - run: npm run build -- --vendor=${{ matrix.vendor }}
 
     - name: Package version
       run: |
@@ -75,7 +81,7 @@ jobs:
         port: 22
         source: ${{ env.ARCHIVE }}
         target: '/var/cache/deployment/tmp'
-   
+
     - name: Running deploy script
       uses: appleboy/ssh-action@master
       with:
@@ -84,7 +90,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: 22
         script: |
-          mv /var/cache/deployment/current/${{ env.DEPLOY_NAME }}.*.tar.gz /var/cache/deployment/previous/
+          mv /var/cache/deployment/current/${{ matrix.vendor }}.*.tar.gz /var/cache/deployment/previous/
           mv /var/cache/deployment/tmp/${{ env.ARCHIVE }} /var/cache/deployment/current/
-          /var/cache/deployment/deploy.sh ${{ env.DEPLOY_NAME }}
-          rm -f $(ls -1t /var/cache/deployment/previous/${{ env.DEPLOY_NAME }}.*.tar.gz | tail -n +5)
+          /var/cache/deployment/deploy.sh ${{ matrix.vendor }}
+          rm -f $(ls -1t /var/cache/deployment/previous/${{ matrix.vendor }}.*.tar.gz | tail -n +5)

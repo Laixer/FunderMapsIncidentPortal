@@ -2,28 +2,33 @@
   <Page class="Home">
     <div class="Home__Wrapper">
       <div class="Home--left">
-        <Title>Wat doen we?</Title>
-
-        <BodyText
-          :bold="true"
-        >Stichting Kennis Centrum Aanpak Funderingsproblematiek (KCAF) is een stichting met als doelstelling het verzamelen, ontwikkelen en ontsluiten van kennis rond de aanpak en preventie van funderingsproblemen.</BodyText>
-
-        <BodyText>KCAF fungeert als nationaal funderingsloket voor alle vragen rond deze problematiek. Van funderingsonderzoek tot funderingsherstel, van aanpak tot financiering, van preventie tot innovatie. Deze doelstelling willen we samen met vakmensen en eigen medewerkers bereiken. KCAF is een stichting zonder winstoogmerk. Bij dit loket kunt u een melding maken van een funderingsprobleem aan uw woning. Wij zullen u vrijblijvend van advies voorzien.</BodyText>
-
+        <Title>
+          <span v-html="vendor.home.title" />
+        </Title>
+        <BodyText :bold="true">
+          <span v-html="vendor.home.subtitle" />
+        </BodyText>
+        <BodyText>
+          <span v-html="vendor.home.content" />
+        </BodyText>
         <div>
-          <Button @click="handleNavigate">
+          <Button id="navigateBodyButton" @click="handleNavigate">
             <span>Melding maken</span>
             <SvgIcon icon="icon_arrow_next" />
           </Button>
         </div>
       </div>
       <div class="Home--right">
-        <img src="../assets/home.jpg" width="640" height="585" alt="Logo" />
+        <img :src="vendor.home.image" width="640" height="585" alt="Logo" />
       </div>
     </div>
 
     <template slot="footer">
       <Copyright />
+      <Button id="navigateFooterButton" @click="handleNavigate">
+        <span>Melding maken</span>
+        <SvgIcon icon="icon_arrow_next" />
+      </Button>
     </template>
   </Page>
 </template>
@@ -37,6 +42,7 @@ import BodyText from '@/components/BodyText.vue'
 import Copyright from '@/components/Copyright.vue'
 import Button from '@/components/Button.vue'
 import SvgIcon from '@/components/common/SvgIcon.vue'
+import vendor from '@/vendor'
 
 @Component({
   components: {
@@ -52,6 +58,8 @@ export default class Home extends Vue {
       }
     })
   }
+
+  private vendor = vendor
 }
 </script>
 
@@ -70,6 +78,10 @@ export default class Home extends Vue {
 
     @media only screen and (min-width: $BREAKPOINT) {
       flex-direction: row;
+
+      &--right {
+        display: none;
+      }
     }
   }
   &--left {
@@ -87,6 +99,7 @@ export default class Home extends Vue {
   }
 
   &--right {
+    display: none;
     margin: 40px 0;
     max-width: 100%;
     max-height: 580px;
@@ -94,14 +107,17 @@ export default class Home extends Vue {
     // The max width of the image
     @media only screen and (min-width: 640px) {
       max-width: 640px;
+      display: none;
     }
 
     @media only screen and (min-width: $BREAKPOINT) {
+      display: block;
       margin: 0;
       max-width: calc(100% - 610px); // 640px;
     }
 
     img {
+      border-radius: 5px;
       display: block;
       // object-fit: contain;
       width: 100%;
@@ -109,9 +125,36 @@ export default class Home extends Vue {
     }
   }
 
+  #navigateBodyButton {
+    display: none;
+
+    @media only screen and (min-width: $BREAKPOINT) {
+      display: inline-flex;
+    }
+  }
+
+  #navigateFooterButton {
+    display: inline-flex;
+
+    @media only screen and (min-width: $BREAKPOINT) {
+      display: none;
+    }
+  }
+
   // Align Copyright to the start
   .Footer {
-    justify-content: start;
+    justify-content: center;
+
+    .Copyright {
+      display: none;
+    }
+
+    @media only screen and (min-width: $BREAKPOINT) {
+      justify-content: start;
+      .Copyright {
+        display: block;
+      }
+    }
   }
 }
 </style>
