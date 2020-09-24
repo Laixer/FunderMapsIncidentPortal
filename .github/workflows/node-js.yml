@@ -44,7 +44,7 @@ jobs:
 
     strategy:
       matrix:
-        vendor: [portal-fundermaps]
+        vendor: [portal-fundermaps, portal-veenweidefryslan]
 
     steps:
     - uses: actions/checkout@v2
