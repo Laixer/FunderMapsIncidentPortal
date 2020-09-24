@@ -35,8 +35,8 @@ interface State {
   internalNote: null | string,
 }
 
-export default new Vuex.Store({
-  state: {
+const getDefaultState = () => {
+  return {
     name: null,
     firstName: null,
     lastName: null,
@@ -56,7 +56,11 @@ export default new Vuex.Store({
     documentFile: [],
     note: null,
     internalNote: null,
-  } as State,
+  } as State
+}
+
+export default new Vuex.Store({
+  state: getDefaultState,
   getters: {
     /**
      * Retrieve the indent request body
@@ -82,6 +86,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    resetState(state: State) {
+      state = getDefaultState()
+    },
     updateState(state: State, props: Prop[]) {
       Object.entries(props).map((val) => {
         const prop: Prop = val[1]

@@ -50,6 +50,11 @@ import vendor from '@/vendor'
   }
 })
 export default class Home extends Vue {
+
+  created(): void {
+    this.$store.commit('resetState')
+  }
+
   handleNavigate(): void {
     this.$router.push({
       name: 'Questions',
