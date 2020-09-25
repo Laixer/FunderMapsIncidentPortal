@@ -39,25 +39,31 @@ export default class Page extends Vue {
   left: 0;
   height: 80px;
   width: 100%;
-  padding: 20px 80px;
   border-bottom: 1px solid #d4daf0;
   background: white;
   z-index: 999999;
 
   display: flex;
   align-items: center;
+  justify-content: center;
   user-select: none;
+  
+  @media only screen and (min-width: $BREAKPOINT) {
+      justify-content: flex-start;
+  }
 
   &__Logo {
       display: flex;
-      justify-content: flex-start;
       max-width: 100%;
       max-height: 100%;
       margin: auto 0px;
+      justify-content: center;
+
   }
 
   @media only screen and (min-width: $BREAKPOINT) {
     position: sticky;
+    padding: 20px 80px;
     top: 0;
     height: 115px;
   }
