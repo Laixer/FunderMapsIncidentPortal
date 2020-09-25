@@ -35,7 +35,8 @@ module.exports = {
         
         additionalData: `
           @import "./vendors/${vendor}/style.scss";
-          $BREAKPOINT: ${process.env.BREAKPOINT};
+          @import "./src/style.scss";
+          $BACKGROUND_IMAGE: url("../vendors/${vendor}/assets/background.jpg");
         `
       }
     }

@@ -1,16 +1,18 @@
 import * as logo from './assets/logo.svg'
 import * as homeImage from './assets/home.jpg'
+import * as background from './assets/background.jpg'
 
 export default {
     name: "portal-fundermaps",
     style: {
         mapboxPrimaryColor: "#2657FF",
     },
+    background: background,
     logo: logo,
     home: {
         title: "Wat doen we?",
-        subtitle: "Stichting Kennis Centrum Aanpak Funderingsproblematiek (KCAF) is een stichting met als doelstelling het verzamelen, ontwikkelen en ontsluiten van kennis rond de aanpak en preventie van funderingsproblemen.",
-        content: "KCAF fungeert als nationaal funderingsloket voor alle vragen rond deze problematiek. Van funderingsonderzoek tot funderingsherstel, van aanpak tot financiering, van preventie tot innovatie. Deze doelstelling willen we samen met vakmensen en eigen medewerkers bereiken. KCAF is een stichting zonder winstoogmerk. Bij dit loket kunt u een melding maken van een funderingsprobleem aan uw woning. Wij zullen u vrijblijvend van advies voorzien.",
+        subtitle: "Bij het funderingsloket van FunderMaps kunt u melding maken van funderingsschade aan panden.",
+        content: "<p>Meldingen worden behandeld door het KCAF (Kennis Centrum Aanpak Funderingsproblematiek), een onafhankelijke stichting die tot doel heeft om kennis rond fundering te verzamelen, te verbeteren en te delen.</p><p>Het KCAF al sinds 2012 het landelijk funderingsloket waar meldingen en klachten worden gedaan en behandeld.</p>",
         image: homeImage
     },
     final: {
