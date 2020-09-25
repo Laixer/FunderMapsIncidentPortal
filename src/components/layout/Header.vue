@@ -48,20 +48,18 @@ export default class Page extends Vue {
   align-items: center;
   user-select: none;
 
-  a {
-    margin: auto;
-    height: 30px;
+  &__Logo {
+      display: flex;
+      justify-content: flex-start;
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto 0px;
   }
 
   @media only screen and (min-width: $BREAKPOINT) {
     position: sticky;
     top: 0;
     height: 115px;
-
-    a {
-      margin: 0;
-      height: 30px;
-    }
   }
 
   @media only screen and (min-width: $BREAKPOINT) {

@@ -6,9 +6,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
 import Header from '@/components/layout/Header.vue'
-import vendor from '@/vendor'
 
 @Component({
   components: {
@@ -20,9 +18,21 @@ export default class App extends Vue { }
 
 <style lang="scss">
 body {
+  position: relative;
+  z-index: 1;
+}
+body::before {
   @media only screen and (min-width: $BREAKPOINT) {
+      content: "";
     background: $BACKGROUND_IMAGE;
     background-size: cover;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(5px);
   }
 }
 #app {
