@@ -26,7 +26,7 @@ body::before {
       content: "";
     background: $BACKGROUND_IMAGE;
     background-size: cover;
-    opacity: 0.5;
+    opacity: 0.6;
     position: absolute;
     top: 0;
     width: 100%;
@@ -36,6 +36,7 @@ body::before {
   }
 }
 #app {
+  border-radius: 5px;
   font-family: system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
