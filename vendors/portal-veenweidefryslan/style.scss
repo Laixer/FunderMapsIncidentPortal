@@ -2,9 +2,6 @@ $PRIMARY_COLOR: #2657FF;
 
 .Header {
     img {
-        @media only screen and (min-width: $BREAKPOINT) {
-            height: 60px;
-        }
-        height: 50px;
+        height: 60px;
     }
 }
