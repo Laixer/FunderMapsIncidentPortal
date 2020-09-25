@@ -8,6 +8,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 import Header from '@/components/layout/Header.vue'
+import vendor from '@/vendor'
 
 @Component({
   components: {
@@ -20,7 +21,7 @@ export default class App extends Vue { }
 <style lang="scss">
 body {
   @media only screen and (min-width: $BREAKPOINT) {
-    background: url("./assets/Background.jpg");
+    background: $BACKGROUND_IMAGE;
     background-size: cover;
   }
 }
