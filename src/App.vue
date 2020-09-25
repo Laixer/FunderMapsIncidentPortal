@@ -17,13 +17,15 @@ export default class App extends Vue { }
 </script>
 
 <style lang="scss">
+@import './style.scss';
+
 body {
   position: relative;
   z-index: 1;
 }
 body::before {
   @media only screen and (min-width: $BREAKPOINT) {
-      content: "";
+    content: "";
     background: $BACKGROUND_IMAGE;
     background-size: cover;
     opacity: 0.6;

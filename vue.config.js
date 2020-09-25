@@ -35,6 +35,7 @@ module.exports = {
         
         additionalData: `
           @import "./vendors/${vendor}/style.scss";
+          @import "./src/style.scss";
           $BACKGROUND_IMAGE: url("../vendors/${vendor}/assets/background.jpg");
         `
       }
