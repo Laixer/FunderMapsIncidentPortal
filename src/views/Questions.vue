@@ -10,7 +10,11 @@
     </transition>
 
     <template slot="footer">
-      <Button :ghost="true" v-if="this.currentStep > 1" @click="handleNavigate(-1)">
+      <Button
+        :ghost="true"
+        v-if="this.currentStep > 1"
+        @click="handleNavigate(-1)"
+      >
         <SvgIcon icon="icon_arrow_previous" />
         <span>Vorige</span>
       </Button>
@@ -21,7 +25,11 @@
         </Button>
       </template>
       <template v-else>
-        <Button :isSubmit="true" :disabled="!this.valid" @click="handleNavigate(1)">
+        <Button
+          :isSubmit="true"
+          :disabled="!this.valid"
+          @click="handleNavigate(1)"
+        >
           <span>Versturen</span>
           <SvgIcon icon="icon_check" />
         </Button>
