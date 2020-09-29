@@ -3,6 +3,7 @@ import * as homeImage from './assets/home.jpg'
 
 export default {
     name: "default",
+    client_id: 60,
     style: {
         mapboxPrimaryColor: "#2657FF",
     },

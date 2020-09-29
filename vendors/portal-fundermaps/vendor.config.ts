@@ -4,6 +4,7 @@ import * as background from './assets/background.jpg'
 
 export default {
     name: "portal-fundermaps",
+    client_id: 61,
     style: {
         mapboxPrimaryColor: "#2657FF",
     },

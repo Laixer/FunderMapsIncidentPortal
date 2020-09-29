@@ -4,6 +4,7 @@ import FoundationDamageCharacteristics from '@/types/FoundationDamageCharacteris
 import FoundationType from '@/types/FoundationType'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import vendor from '@/vendor'
 
 Vue.use(Vuex)
 
@@ -68,7 +69,7 @@ export default new Vuex.Store({
     getIndicentRequestBody(state) {
       const request = {
         "Name": state.name,
-        "ClientId": parseInt(process.env.VUE_APP_CLIENTID, 10),
+        "ClientId": vendor.client_id,
         "Email": state.email,
         "PhoneNumber": state.phoneNumber,
         "FoundationType": parseInt(state.foundationType + '', 10),
