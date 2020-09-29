@@ -130,7 +130,7 @@ export default class ProfileQuestion extends Mixins(QuestionMixin) {
 
     return !!(
       body.Address
-      && body.ClientId
+      && body.ClientId && this.emailValid
     )
   }
 
