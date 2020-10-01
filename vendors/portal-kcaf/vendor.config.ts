@@ -3,6 +3,7 @@ import * as homeImage from './assets/home.jpg'
 
 export default {
     name: "portal-kcaf",
+    client_id: 62,
     style: {
         mapboxPrimaryColor: "#2657FF",
     },

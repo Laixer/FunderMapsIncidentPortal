@@ -3,6 +3,7 @@ import * as homeImage from './assets/home.jpg'
 
 export default {
     name: "portal-fundermaps",
+    client_id: 63,
     style: {
         mapboxPrimaryColor: "#2657FF",
     },

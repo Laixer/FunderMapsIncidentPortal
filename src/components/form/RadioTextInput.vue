@@ -66,7 +66,12 @@ $unselected: adjust-color(
   $blue: -114,
   $alpha: -0.7
 );
-$unselectedText: adjust-color($PRIMARY_COLOR, $red: 21, $green: 0, $blue: -124);
+$unselectedText: adjust-color(
+  $PRIMARY_COLOR,
+  $red: 81,
+  $green: 41,
+  $blue: -114
+);
 .RadioTextInput {
   &__Wrapper {
     display: flex;

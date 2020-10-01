@@ -1,9 +1,14 @@
 <template>
-  <form class="Form" @submit.prevent="handleSubmit" :autocomplete="autocomplete ? 'on': 'off'" >
+  <form
+    class="Form"
+    @submit.prevent="handleSubmit"
+    :autocomplete="autocomplete ? 'on' : 'off'"
+    novalidate
+  >
     <slot />
 
     <!-- Required to allow the form to be submitted programmatically -->
-    <button ref="btn" style="display:none" type="submit" />
+    <button ref="btn" style="display: none" type="submit" />
   </form>
 </template>
 
@@ -63,7 +68,7 @@ export default class Form extends Vue {
    */
   validate(): void {
     this.fields.forEach(field => {
-      field.validate() 
+      field.validate()
     })
   }
 
@@ -83,7 +88,7 @@ export default class Form extends Vue {
     this.fields.forEach(field => {
       field.resetValidation()
     })
-  } 
+  }
 
   /**
    * Allow the form to be submitted programmatically
@@ -105,15 +110,15 @@ export default class Form extends Vue {
     }
 
     this.validate()
-    
+
     this.$nextTick(() => {
-      if (this.isValid()) {  
+      if (this.isValid()) {
         this.$emit('submit', e)
       } else {
         this.$emit('error', e)
       }
     })
 
-  } 
+  }
 }
 </script>

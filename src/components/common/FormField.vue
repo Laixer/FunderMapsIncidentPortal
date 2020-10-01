@@ -9,7 +9,7 @@
         :value="fieldValue"
         :type="type"
         :placeholder="placeholder"
-        :autocomplete="autocomplete ? autocomplete: 'off'"
+        :autocomplete="autocomplete ? autocomplete : 'off'"
         :disabled="isDisabled"
         :rows="rows"
         class="FormField__Field"
@@ -23,14 +23,18 @@
         :type="type"
         :pattern="pattern"
         :placeholder="placeholder"
-        :autocomplete="autocomplete ? autocomplete: 'off'"
+        :autocomplete="autocomplete ? autocomplete : 'off'"
         :disabled="isDisabled"
         class="FormField__Field"
         @input="handleInput"
         @blur="handleBlur"
       />
 
-      <SvgIcon v-if="validationIcon" :icon="validationIcon" class="FormField__Icon" />
+      <SvgIcon
+        v-if="validationIcon"
+        :icon="validationIcon"
+        class="FormField__Icon"
+      />
     </div>
 
     <span v-if="error" class="FormField__Feedback">{{ error }}</span>
