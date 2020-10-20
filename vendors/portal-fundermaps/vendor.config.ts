@@ -11,8 +11,8 @@ export default {
     background: background,
     logo: logo,
     home: {
-        title: "Wat doen we?",
-        subtitle: "Bij het funderingsloket van FunderMaps kunt u melding maken van funderingsschade aan panden.",
+        title: "Schademelding maken",
+        subtitle: "Bij het Nationaal Funderingsloket kunt u melding maken van funderingsschade aan panden.",
         content: "<p>Meldingen worden behandeld door het KCAF (Kennis Centrum Aanpak Funderingsproblematiek), een onafhankelijke stichting die tot doel heeft om kennis rond fundering te verzamelen, te verbeteren en te delen.</p><p>Het KCAF is al sinds 2012 het landelijk funderingsloket waar meldingen en klachten worden gedaan en behandeld.</p>",
         image: homeImage
     },
