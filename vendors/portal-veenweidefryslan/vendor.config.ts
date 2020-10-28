@@ -2,7 +2,7 @@ import * as logo from './assets/logo.png'
 import * as homeImage from './assets/home.jpg'
 
 export default {
-    name: "portal-fundermaps",
+    name: "portal-veenweidefryslan",
     client_id: 63,
     style: {
         mapboxPrimaryColor: "#2657FF",
