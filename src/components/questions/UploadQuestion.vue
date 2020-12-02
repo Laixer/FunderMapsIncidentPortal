@@ -2,8 +2,11 @@
   <div class="Upload__Wrapper">
     <Title
       :center="true"
-      subtitle="U kunt deze stap ook overslaan"
-    >Heeft u een onderzoeksrapport beschikbaar?</Title>
+      subtitle="(onderzoeksrapporten, archiefstukken, tekeningen of foto's)"
+    >Heeft u informatie beschikbaar?</Title>
+
+    <BodyText :center="true" :italic="true" text="U kunt deze stap ook overslaan." />
+
 
     <Form>
       <UploadArea
@@ -28,6 +31,7 @@ import SvgIcon from '@/components/common/SvgIcon.vue'
 
 import Form from '@/components/common/Form.vue'
 import FormField from '@/components/common/FormField.vue'
+import BodyText from '@/components/BodyText.vue'
 
 import UploadArea from '@/components/common/UploadArea.vue'
 
@@ -35,7 +39,8 @@ import UploadArea from '@/components/common/UploadArea.vue'
   mixins: [QuestionMixin],
   components: {
     Page, Button, Title, SvgIcon,
-    Form, FormField, UploadArea
+    Form, FormField, UploadArea,
+    BodyText
   }
 })
 export default class UploadQuestion extends Mixins(QuestionMixin) {
@@ -79,6 +84,16 @@ export default class UploadQuestion extends Mixins(QuestionMixin) {
 .Upload__Wrapper {
   height: 100%;
   padding: 20px 20px;
+
+  .Title {
+    margin-bottom: 4px;
+  }
+
+  .BodyText {
+    max-width: 100%;
+    margin-bottom: 26px;
+    font-size: 16px;
+  }
 
   @media only screen and (min-width: $BREAKPOINT) {
     padding: 50px 80px;
