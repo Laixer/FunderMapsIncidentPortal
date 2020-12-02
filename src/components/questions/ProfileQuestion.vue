@@ -44,7 +44,7 @@
       <TextArea
         :value="this.note"
         label="Toelichting"
-        placeholder="Korte beschrijving"
+        placeholder="Aanvullende informatie of beschrijving opnemen"
         id="toelichting"
         :valid="noteValid"
         :rows="4"
