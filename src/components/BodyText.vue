@@ -1,5 +1,5 @@
 <template>
-  <p class="BodyText" :class="{ 'BodyText--center': center, 'BodyText--bold': bold }">
+  <p class="BodyText" :class="{ 'BodyText--center': center, 'BodyText--bold': bold, 'BodyText--italic': italic  }">
         <slot>{{ text }}</slot>
   </p>
 </template>
@@ -23,6 +23,12 @@ export default class BodyText extends Vue {
    */
   @Prop({ default: false }) readonly bold!: boolean;
 
+  
+  /**
+   * Whether to make the text italic
+   */
+  @Prop({ default: false }) readonly italic!: boolean;
+
 }
 </script>
 
@@ -42,6 +48,9 @@ export default class BodyText extends Vue {
   }
   &--bold {
     font-weight: bold;
+  }
+  &--italic {
+    font-style: italic;
   }
 }
 </style>

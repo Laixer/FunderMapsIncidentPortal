@@ -1,6 +1,7 @@
 <template>
   <div class="Profile__Wrapper">
     <Title :center="true">Uw gegevens</Title>
+    <BodyText :center="true" :italic="true" text="Uw persoonsgegevens worden vertrouwelijk behandeld en niet gedeeld met derden." />
 
     <Form :busy="busy">
       <div class="Form__Row">
@@ -44,7 +45,7 @@
       <TextArea
         :value="this.note"
         label="Toelichting"
-        placeholder="Korte beschrijving"
+        placeholder="Aanvullende informatie of beschrijving opnemen"
         id="toelichting"
         :valid="noteValid"
         :rows="4"
@@ -66,6 +67,7 @@ import SvgIcon from '@/components/common/SvgIcon.vue'
 import Form from '@/components/common/Form.vue'
 import FormField from '@/components/common/FormField.vue'
 import TextArea from '@/components/form/TextArea.vue'
+import BodyText from '@/components/BodyText.vue'
 
 import * as EmailValidator from 'email-validator';
 
@@ -73,7 +75,8 @@ import * as EmailValidator from 'email-validator';
   mixins: [QuestionMixin],
   components: {
     Page, Button, Title, SvgIcon,
-    Form, FormField, TextArea
+    Form, FormField, TextArea,
+    BodyText
   }
 })
 
@@ -83,8 +86,6 @@ export default class ProfileQuestion extends Mixins(QuestionMixin) {
   private email: string | null = null
   private phoneNumber: string | null = null
   private note: string | null = null
-
-
 
   private get firstnameValid(): boolean | null {
     return this.firstName !== null
@@ -199,8 +200,19 @@ export default class ProfileQuestion extends Mixins(QuestionMixin) {
 
 <style lang="scss">
 .Profile {
+
   &__Wrapper {
     padding: 20px 20px;
+
+    .Title {
+      margin-bottom: 6px;
+    }
+    
+    .BodyText {
+      font-size: 14px;
+      line-height: 16px;
+      margin-bottom: 12px;
+    }
 
     @media only screen and (min-width: $BREAKPOINT) {
       padding: 20px 80px;

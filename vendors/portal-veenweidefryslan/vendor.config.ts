@@ -9,9 +9,9 @@ export default {
     },
     logo: logo,
     home: {
-        title: "Schademelding maken",
-        subtitle: "Bij het funderingsloket Veenweide Fryslân kunt u melding maken van funderingsschade aan panden in het Veenweidegebied van Fryslân. Meldingen worden behandeld door het KCAF (Kennis Centrum Aanpak Funderingsproblematiek), een onafhankelijke stichting voor Funderingsproblematiek.",
-        content: "Uw melding wordt door een funderingsdeskundige van het KCAF op afstand bekeken en voorziet u vervolgens van een advies. Het loket is een initiatief van de provincie Fryslân, Wetterskip Fryslân en de gemeenten Leeuwarden, Heerenveen, Smallingerland, Opsterland, Weststellingwerf, De Fryske Marren en Súdwest-Fryslân.",
+        title: "Melding maken",
+        subtitle: "Bij het funderingsloket Veenweide Fryslân kunt u melding maken van funderingsschade aan panden in het Veenweidegebied van Fryslân of informatie over funderingsproblematiek opvragen. Meldingen worden behandeld door het KCAF (Kennis Centrum Aanpak Funderingsproblematiek), een onafhankelijke stichting voor Funderingsproblematiek.",
+        content: "<p>Uw melding wordt door een funderingsdeskundige van het KCAF op afstand bekeken en voorziet u vervolgens van een reactie. Uw gegevens worden niet gedeeld buiten het KCAF.</p><p>Het loket is een initiatief van de provincie Fryslân, Wetterskip Fryslân en de gemeenten Leeuwarden, Heerenveen, Smallingerland, Opsterland, Weststellingwerf, De Fryske Marren en Súdwest-Fryslân.</p>",
         image: homeImage
     },
     final: {

@@ -44,7 +44,7 @@ export default class FoundationDamageCharacteristicsQuestion extends Mixins(Ques
       value: FoundationDamageCharacteristics.JammingDoorWindow
     },
     {
-      label: 'De woning ligt hoger dan troittoir/weg',
+      label: 'De woning ligt hoger dan trottoir/weg',
       value: FoundationDamageCharacteristics.ThresholdAboveSubsurface
     },
     {
@@ -52,7 +52,7 @@ export default class FoundationDamageCharacteristicsQuestion extends Mixins(Ques
       value: FoundationDamageCharacteristics.Crack
     },
     {
-      label: 'De woning ligt lager dan triottoir/weg',
+      label: 'De woning ligt lager dan trottoir/weg',
       value: FoundationDamageCharacteristics.ThresholdBelowSubsurface
     },
     {
