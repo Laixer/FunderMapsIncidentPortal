@@ -1,5 +1,5 @@
 const path = require('path')
-const {argv} = require('yargs')
+const { argv } = require('yargs')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
@@ -23,7 +23,7 @@ module.exports = {
           test: /\.svg$/,
           include: [
             path.resolve(__dirname, "src/assets/icons")
-        ],
+          ],
           use: [{ loader: 'html-loader' }]
         }
       ]
@@ -32,7 +32,6 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        
         additionalData: `
           @import "./vendors/${vendor}/style.scss";
           @import "./src/style.scss";
