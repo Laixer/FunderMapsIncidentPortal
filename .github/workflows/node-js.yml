@@ -22,7 +22,11 @@ jobs:
 
     strategy:
       matrix:
-        vendor: [portal-fundermaps, portal-veenweidefryslan, portal-kcaf]
+        vendor:
+          - portal-fundermaps
+          - portal-veenweidefryslan
+          - portal-kcaf
+          - portal-regiodeal
     
     steps:
     - uses: actions/checkout@v2
